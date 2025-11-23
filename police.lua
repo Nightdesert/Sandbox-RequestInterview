@@ -611,7 +611,7 @@ exports('RunPlate', function(source, plate, wasEntity)
 			end
 		end
 
-			print("Police:Server:RequestInterview event triggered")
+		
 		local stolen = false
 		if properties.Flags then
 			for k, v in ipairs(properties.Flags) do
@@ -678,7 +678,6 @@ RegisterNetEvent("Police:Server:Slimjim", function()
 end)
 
 RegisterNetEvent("Police:Server:RequestInterview", function()
-    print("Police:Server:RequestInterview event triggered")
     local src = source
     local char = exports['sandbox-characters']:FetchCharacterSource(src)
     local pState = Player(src).state
@@ -713,12 +712,7 @@ RegisterNetEvent("Police:Server:RequestInterview", function()
 				exports['sandbox-hud']:Notification(src, "info", "Success! Your interview request has been sent to dispatch.")
 			end)
 		end
+
 	end)
-		local now = os.time()
-		if interviewCooldowns[src] and (now - interviewCooldowns[src]) < (60 * 5) then
-			exports['sandbox-hud']:Notification(src, "error", "You must wait before requesting another interview.")
-			return
-		end
-		interviewCooldowns[src] = now
 
 
